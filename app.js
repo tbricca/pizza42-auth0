@@ -117,7 +117,7 @@ window.addEventListener('load', function() {
       pingViewBtn.style.display = 'none';
       pingPrivate.style.display = 'none';
       callPrivateMessage.style.display = 'block';
-      loginStatus.innerHTML = 'You are not logged in! Please log in to continue.';
+      loginStatus.innerHTML = 'You are not logged in! Please log in to order some amazing pizza.';
     }
   }
 
