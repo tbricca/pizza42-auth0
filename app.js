@@ -35,12 +35,14 @@ window.addEventListener('load', function() {
   var callPrivateMessage = document.getElementById('call-private-message');
   var pingMessage = document.getElementById('ping-message');
 
-  pingPublic.addEventListener('click', function() {
-    callAPI('/public', false);
-  });
+    // Public API call
+  // pingPublic.addEventListener('click', function() {
+  //   callAPI('/public', false);
+  // });
 
   pingPrivate.addEventListener('click', function() {
     callAPI('/private', true);
+    alert("Pizza 42 has recieved your desire to order a pizza!");
   });
 
   loginBtn.addEventListener('click', login);
