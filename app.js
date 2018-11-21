@@ -140,7 +140,7 @@ function emailVerification (user, context, callback) {
   function getProfile() {
     if (!userProfile) {
       var accessToken = localStorage.getItem('access_token');
-
+      
       if (!accessToken) {
         console.log('Access token must exist to fetch profile');
       }
@@ -149,6 +149,7 @@ function emailVerification (user, context, callback) {
         if (profile) {
           userProfile = profile;
           displayProfile();
+          
         }
       });
     } else {
@@ -221,4 +222,3 @@ function emailVerification (user, context, callback) {
   displayButtons();
 });
 
-app.listen(process.env.PORT || 3000) 
