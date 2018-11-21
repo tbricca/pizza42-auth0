@@ -13,9 +13,16 @@ window.addEventListener('load', function() {
     clientID: 'HARmSNkii3uaxjDbwVRXghmGmEmTIKIP',
     redirectUri: AUTH0_CALLBACK_URL,
     responseType: 'token id_token',
-    scope: 'openid profile read:messages',
-    leeway: 60
+    scope: 'openid profile gender email email_verified'
   });
+
+  // look for email verified in the authResult, figure out the way to isolate it
+  // console.log(email_verified)
+
+  // console log the test API
+
+  // Call Google places API
+
 
   var homeView = document.getElementById('home-view');
   var profileView = document.getElementById('profile-view');
@@ -79,7 +86,17 @@ window.addEventListener('load', function() {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    
   }
+  /// Email Verification Rule 
+function emailVerification (user, context, callback) {
+  if (!user.email_verified) {
+    return callback(new UnauthorizedError('Please verify your email before logging in.'));
+  } else {
+    return callback(null, user, context);
+  }
+  
+}
 
   function logout() {
     // Remove tokens and expiry time from localStorage
@@ -106,7 +123,7 @@ window.addEventListener('load', function() {
       pingViewBtn.style.display = 'inline-block';
       pingPrivate.style.display = 'inline-block';
       callPrivateMessage.style.display = 'none';
-      loginStatus.innerHTML = 'You are logged in! You can now send authenticated requests to your server.';
+      loginStatus.innerHTML = 'You are logged in! You can now order pizza.';
     } else {
       homeView.style.display = 'inline-block';
       loginBtn.style.display = 'inline-block';
@@ -156,6 +173,9 @@ window.addEventListener('load', function() {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         setSession(authResult);
+        // emailVerification(authResult);
+        console.log(authResult.idTokenPayload);
+        // emailVerification(authResult.idTokenPayload.email);
         loginBtn.style.display = 'none';
         homeView.style.display = 'inline-block';
       } else if (err) {
@@ -170,6 +190,7 @@ window.addEventListener('load', function() {
   }
 
   handleAuthentication();
+ 
 
   function callAPI(endpoint, secured) {
     var url = apiUrl + endpoint;
