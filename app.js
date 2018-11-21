@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
 
   var webAuth = new auth0.WebAuth({
     domain: 'tbricca.auth0.com',
-    clientID: 'HARmSNkii3uaxjDbwVRXghmGmEmTIKIP',
+    clientID: 'Ugl4SogQcPr2APoLEK2NAOJGxD67cbgF',
     redirectUri: AUTH0_CALLBACK_URL,
     responseType: 'token id_token',
     scope: 'openid profile gender email email_verified'
@@ -113,7 +113,7 @@ function emailVerification (user, context, callback) {
     return new Date().getTime() < expiresAt;
   }
 
-  
+
   function displayButtons() {
     var loginStatus = document.querySelector('.container h4');
     if (isAuthenticated()) {
