@@ -113,6 +113,7 @@ function emailVerification (user, context, callback) {
     return new Date().getTime() < expiresAt;
   }
 
+  
   function displayButtons() {
     var loginStatus = document.querySelector('.container h4');
     if (isAuthenticated()) {
