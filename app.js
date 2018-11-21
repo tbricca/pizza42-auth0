@@ -49,7 +49,6 @@ window.addEventListener('load', function() {
 
   pingPrivate.addEventListener('click', function() {
     callAPI('/private', true);
-    alert("Pizza 42 has recieved your desire to order a pizza!");
   });
 
   loginBtn.addEventListener('click', login);
@@ -191,19 +190,21 @@ function emailVerification (user, context, callback) {
 
   handleAuthentication();
  
-
+// Order Pizza API
   function callAPI(endpoint, secured) {
     var url = apiUrl + endpoint;
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
     if (secured) {
       xhr.setRequestHeader(
         'Authorization',
         'Bearer ' + localStorage.getItem('access_token')
       );
+      console.log(localStorage.getItem('access_token', "Pizza API Call"));
     }
     xhr.onload = function() {
       if (xhr.status == 200) {
+        alert("Pizza 42 has recieved your request to order a pizza!");
         // update message
         // need to write that if a user is authorized and email is 
         //verified then they can order pizza
