@@ -22,7 +22,7 @@ This sample demonstrates how to make secure calls to an API after authenticating
 - It has also been paired with Google People API 
 
 # Hosting
-If the deployment works it will be hosted at http://pizza42-42auth0.herokuapp.com/ 
+If the deployment works it should be hosted at either https://tbricca.github.io/pizza42-auth0/ or at http://pizza42-42auth0.herokuapp.com/ 
 
 ## Author
 
