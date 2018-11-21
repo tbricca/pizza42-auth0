@@ -220,3 +220,5 @@ function emailVerification (user, context, callback) {
 
   displayButtons();
 });
+
+app.listen(process.env.PORT || 3000) 
