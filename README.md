@@ -1,19 +1,17 @@
-# Auth0 JavaScript Calling an API
+# Auth0 JavaScript Build out For Pizza 42 
 
-This sample demonstrates how to make secure calls to an API after authenticating a user with Auth0. The calls to the API are made with the user's `access_token`.
+#Calling an API
+
+This sample demonstrates how to make secure calls to an API after authenticating a user with Auth0. The calls to the API are made with the user's `access_token` and at the moment utilizes a fake online REST API for testing from https://jsonplaceholder.typicode.com/. After a user is logged in and clicks order pizza they will recieve an alert notifying them that the request is recieved and a JSON object will be sent back. 
 
 ## Getting Started
 
-If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. If you are serving the application with the provided `serve` library, that URL is `http://localhost:3000`.
+# To Run it Locally
 
-If you haven't already done so, create a new API in the [APIs section](https://manage.auth0.com/#/apis) and provide an identifier for it.
-
-Clone the repo or download it from the JavaScript quickstart page in Auth0's documentation.
-
-```bash
-cd 03-Calling-an-API
 npm install
-```
+npm start
+
+The application will be served at `http://localhost:3000`.
 
 ## Set the Client ID, Domain, and API URL
 
@@ -27,23 +25,7 @@ In addition to the above-mentioned `auth0-variables.js` file, a `.env` file is p
 
 This file has two values, `AUTH0_AUDIENCE` and `AUTH0_DOMAIN`. If you download this sample from the quickstart page, the value for `AUTH0_DOMAIN` will be populated automatically, but you will still need to populate `AUTH0_AUDIENCE` manually. The value for `AUTH0_AUDIENCE` is the identifier used for an API that you create in the Auth0 dashboard.
 
-## Run the Application
 
-The `serve` module provided with this sample can be run with the `start` command.
-
-```bash
-npm start
-```
-
-The application will be served at `http://localhost:3000`.
-
-## Run the Application With Docker
-
-In order to run the example with docker you need to have `docker` installed.
-
-You also need to set the environment variables as explained [previously](#set-the-client-id-domain-and-api-url).
-
-Execute in command line `sh exec.sh` to run the Docker in Linux, or `.\exec.ps1` to run the Docker in Windows.
 
 ## What is Auth0?
 
