@@ -4,7 +4,6 @@ window.addEventListener('load', function() {
   var loadingSpinner = document.getElementById('loading');
   content.style.display = 'block';
   loadingSpinner.style.display = 'none';
-
   var userProfile;
   var apiUrl = 'http://localhost:3001/api';
 
@@ -16,19 +15,11 @@ window.addEventListener('load', function() {
     scope: 'openid profile gender email email_verified'
   });
 
-  // look for email verified in the authResult, figure out the way to isolate it
-  // console.log(email_verified)
-
-  // console log the test API
-
-  // Call Google places API
-
-
   var homeView = document.getElementById('home-view');
   var profileView = document.getElementById('profile-view');
   var pingView = document.getElementById('ping-view');
 
-  // buttons and event listeners
+  // buttons and Event Listeners
   var loginBtn = document.getElementById('qsLoginBtn');
   var logoutBtn = document.getElementById('qsLogoutBtn');
 
@@ -42,10 +33,6 @@ window.addEventListener('load', function() {
   var callPrivateMessage = document.getElementById('call-private-message');
   var pingMessage = document.getElementById('ping-message');
 
-    // Public API call
-  // pingPublic.addEventListener('click', function() {
-  //   callAPI('/public', false);
-  // });
 
   pingPrivate.addEventListener('click', function() {
     callAPI('/private', true);
@@ -94,7 +81,6 @@ function emailVerification (user, context, callback) {
   } else {
     return callback(null, user, context);
   }
-  
 }
 
   function logout() {
@@ -112,7 +98,6 @@ function emailVerification (user, context, callback) {
     var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
-
 
   function displayButtons() {
     var loginStatus = document.querySelector('.container h4');
@@ -189,7 +174,6 @@ function emailVerification (user, context, callback) {
       displayButtons();
     });
   }
-
   handleAuthentication();
  
 // Order Pizza API
