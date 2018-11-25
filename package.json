@@ -2,10 +2,10 @@
   "name": "calling-an-api",
   "version": "0.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "npm-run-all --parallel server client",
-    "server": "node server.js",
+    "server": "node index.js",
     "client": "serve -p 3000"
   },
   "author": "Auth0",
