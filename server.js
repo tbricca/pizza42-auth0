@@ -1,4 +1,5 @@
 const express = require('express');
+const PORT = process.env.PORT || 5000;
 const app = express();
 const jwt = require('express-jwt');
 const jwtAuthz = require('express-jwt-authz');
@@ -37,5 +38,9 @@ app.get('/api/private', checkJwt, checkScopes, function(req, res) {
   res.json({ message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this." });
 });
 
-app.listen(3001);
-console.log('Listening on http://localhost:3001');
+// app.listen(3001);
+// console.log('Listening on http://localhost:3001');
+
+app.listen(PORT, function() {
+  console.log('port is up and running')
+});
