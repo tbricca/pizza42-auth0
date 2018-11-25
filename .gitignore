@@ -11,7 +11,7 @@ npm-debug.log*
 node_modules
 jspm_packages
 
-“node_modules”
+/node_modules
 “.gitignore”
-".env"
+.env
 echo “.gitignore” >> .gitignore
