@@ -47,6 +47,8 @@ window.addEventListener('load', function() {
   //   callAPI('/public', false);
   // });
 
+  socket = io.listen(process.env.PORT);
+  
   pingPrivate.addEventListener('click', function() {
     callAPI('/private', true);
   });
