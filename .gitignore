@@ -14,4 +14,4 @@ jspm_packages
 /node_modules
 “.gitignore”
 .env
-echo “.gitignore” >> .gitignore
+echo “.gitignore” >> .gitignorenode_modules
