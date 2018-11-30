@@ -8,11 +8,13 @@ window.addEventListener('load', function() {
   var userProfile;
   var apiUrl = 'http://localhost:3001/api';
 
+  // Here's where you'll add your user information from Auth0 
   var webAuth = new auth0.WebAuth({
     domain: 'tbricca.auth0.com',
     clientID: 'Ugl4SogQcPr2APoLEK2NAOJGxD67cbgF',
     redirectUri: AUTH0_CALLBACK_URL,
     responseType: 'token id_token',
+    //Specifying 
     scope: 'openid profile gender email email_verified'
   });
 
@@ -47,12 +49,12 @@ window.addEventListener('load', function() {
   //   callAPI('/public', false);
   // });
 
-  // socket = io.listen(process.env.PORT);
   
   pingPrivate.addEventListener('click', function() {
     callAPI('/private', true);
   });
 
+ // Event listeners for Log, Logout, profile and order pizza buttons 
   loginBtn.addEventListener('click', login);
   logoutBtn.addEventListener('click', logout);
 
@@ -74,7 +76,7 @@ window.addEventListener('load', function() {
     profileView.style.display = 'none';
     pingView.style.display = 'inline-block';
   });
-
+// Auth0 login functionality and access time tokens
   function login() {
     webAuth.authorize();
   }
@@ -90,13 +92,13 @@ window.addEventListener('load', function() {
     
   }
   /// Email Verification Rule 
+  // Wasn't sure where to invoke this 
 function emailVerification (user, context, callback) {
   if (!user.email_verified) {
     return callback(new UnauthorizedError('Please verify your email before logging in.'));
   } else {
     return callback(null, user, context);
   }
-  
 }
 
   function logout() {
@@ -114,7 +116,6 @@ function emailVerification (user, context, callback) {
     var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
-
 
   function displayButtons() {
     var loginStatus = document.querySelector('.container h4');
@@ -139,7 +140,7 @@ function emailVerification (user, context, callback) {
       loginStatus.innerHTML = 'You are not logged in! Please log in to order some amazing pizza.';
     }
   }
-
+// User Profile Functionality 
   function getProfile() {
     if (!userProfile) {
       var accessToken = localStorage.getItem('access_token');
@@ -171,6 +172,8 @@ function emailVerification (user, context, callback) {
     document.querySelector('#profile-view img').src = userProfile.picture;
   }
 
+
+// Handling Authentication & Email Verification 
   function handleAuthentication() {
     webAuth.parseHash(function(err, authResult) {
       if (authResult && authResult.accessToken && authResult.idToken) {
